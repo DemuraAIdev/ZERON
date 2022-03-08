@@ -1,0 +1,33 @@
+{
+  "name": "zeron",
+  "version": "0.0.1",
+  "description": "open source discord bot",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DemuraAIdev/ZERON.git"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+  "author": "demura",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/DemuraAIdev/ZERON/issues"
+  },
+  "homepage": "https://github.com/DemuraAIdev/ZERON#readme",
+  "devDependencies": {
+    "eslint": "^8.10.0"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "console-info": "^0.0.5",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
