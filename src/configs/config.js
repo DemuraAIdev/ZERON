@@ -6,5 +6,8 @@ exports.ClientOptions = {
 };
 exports.SystemConf = {
     name: 'ZERON',
+    OwnerName: 'DemuraAI',
     ownerID: ['', ''],
+    prefix: 'z!',
+    version: '1.0.0',
 };
