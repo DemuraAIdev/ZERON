@@ -2,10 +2,11 @@
   "name": "zeron",
   "version": "0.0.1",
   "description": "open source discord bot",
-  "main": "src/index.js",
+  "main": "src/BootLoader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node src/BootLoader.js",
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",

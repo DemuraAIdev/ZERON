@@ -25,5 +25,6 @@ module.exports = class EventLoader {
                 this.client.on(event.name, (...args) => event.execute(...args));
             }
         }
+        return true;
     }
 };

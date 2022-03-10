@@ -1,11 +1,11 @@
-const fs = require('fs');
 class DBcache {
     // create class DBcache USING map
     constructor() {
         this.cache = new Map();
     }
     async set(key, value) {
-        this.cache.set(key, value);
+        await this.cache.set(key, value);
+        return true;
     }
     get(key) {
         if (!key) return undefined;
@@ -27,20 +27,6 @@ class DBcache {
 
     get getALL() {
         return this.cache;
-    }
-    save() {
-        const obj = Object.fromEntries(this.cache);
-        fs.writeFileSync('./src/tmp/DBcache.json', JSON.stringify(obj));
-    }
-    load() {
-        if (fs.existsSync('./src/tmp/DBcache.json')) {
-            const obj = JSON.parse(fs.readFileSync('./src/tmp/DBcache.json'));
-            this.cache = new Map(Object.entries(obj));
-            console.info('DBcache.json Loaded');
-        }
-        else {
-            console.info('DBcache.json not found');
-        }
     }
 }
 module.exports = DBcache;

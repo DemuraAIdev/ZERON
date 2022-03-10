@@ -37,6 +37,7 @@ module.exports = class PluginLoader {
 
             });
         });
+        return this.client.Plugin;
     }
     disable(name) {
         // delete in map
