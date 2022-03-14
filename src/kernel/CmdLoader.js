@@ -25,12 +25,14 @@ module.exports = class CmdLoader {
                         }
                         catch (error) {
                             console.error('Error Loading Command' + file);
+                            return console.error('This command will not be loaded');
                         }
                         const command = require(resolve(this.path, category, file));
                         if (command.conf === undefined) throw new Error(`File ${file} is not a valid Command file`);
                         this.client.Cmd.set(command.conf.name, command);
+                        if (!command.data) return;
                         slash.push(command.data.toJSON());
-                        this.register(slash);
+                        this.register(slash, command.conf.name);
                     });
                 });
             });
@@ -41,9 +43,9 @@ module.exports = class CmdLoader {
         this.client.Cmd.clear();
         return this.load();
     }
-    async register(slash) {
+    async register(slash, name) {
         await rest.put(Routes.applicationGuildCommands('950766442243059742', '901040545265225768'), { body: slash })
-            .then(() => console.log('Successfully registered application commands.'))
+            .then(() => console.info('Registered Slash Command ' + name))
             .catch(console.error);
     }
 };

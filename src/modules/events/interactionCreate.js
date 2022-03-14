@@ -5,7 +5,7 @@ module.exports = async (client, interaction) => {
     }
     if (!command) return;
     try {
-        await command.run(interaction);
+        await command.run(client, interaction);
         console.info(`Executed command ${interaction.commandName}`);
     }
     catch (error) {
