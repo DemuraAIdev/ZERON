@@ -1,3 +1,1 @@
-require('./lib/console.info');
-require('./lib/console.warn');
-require('./lib/console.error');
+require('./lib/console');

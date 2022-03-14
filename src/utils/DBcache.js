@@ -11,6 +11,7 @@ class DBcache {
         if (!key) return undefined;
         return this.cache.get(key);
     }
+
     delete(key) {
         this.cache.delete(key);
     }
@@ -20,6 +21,11 @@ class DBcache {
     has(key) {
         return this.cache.has(key);
     }
+
+    get keys() {
+        return this.cache.keys();
+    }
+
 
     get size() {
         return this.cache.size;

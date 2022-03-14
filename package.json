@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/BootLoader.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "start:dev": "nodemon src/BootLoader.js --config nodemon.json"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   },
   "homepage": "https://github.com/DemuraAIdev/ZERON#readme",
   "devDependencies": {
-    "eslint": "^8.10.0"
+    "eslint": "^8.10.0",
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "axios": "^0.26.0",

@@ -1,6 +1,7 @@
 const { Client } = require('Discord.js');
 const EventLoader = require('./EventLoader');
 const PluginLoader = require('./PluginLoader');
+const CmdLoader = require('./CmdLoader');
 const { resolve } = require('path');
 const DBcache = require('../utils/DBcache');
 const { SystemConf } = require('../configs/config');
@@ -20,16 +21,18 @@ module.exports = class ClientExt extends Client {
     }
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
     PluginLoaders = new PluginLoader(this, resolve(__dirname, '..', 'modules', 'plugin'));
+    CmdLoaders = new CmdLoader(this, resolve(__dirname, '..', 'modules', 'commands'));
     DBcache = new DBcache();
 
     async init(token) {
         await this.EventLoaders.load();
         await this.PluginLoaders.load();
+        await this.CmdLoaders.load();
         await this.login(token);
     }
 
     async update() {
-        execSync(`git remote set-url origin ${this.config.repo}  && git pull`, (err, stdout) => {
+        await execSync(`git remote set-url origin ${this.config.repo}  && git pull`, (err, stdout) => {
             if (err) {
                 console.error(err);
                 return;

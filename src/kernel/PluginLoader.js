@@ -19,7 +19,7 @@ module.exports = class PluginLoader {
                     console.info(`Found ${files.length} Plugns in ${category}`);
                     files.forEach(file => {
                         if (!file.endsWith('index.js')) return;
-                        console.info(`Loading Plugin ${file}`);
+                        console.info(`Loading Plugin ${moduleconf.name}`);
                         try {
                             require(resolve(this.path, category, file));
                         }
