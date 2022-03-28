@@ -1,8 +1,3 @@
-module.exports = {
-    name: 'ready',
-    once: true,
-    event: 'discordjs',
-    execute(client) {
-        console.info(`Ready! Logged in as ${client.user.tag}`);
-    },
+module.exports = async (client) => {
+    console.info(`Ready! Logged in as ${client.user.tag}`);
 };

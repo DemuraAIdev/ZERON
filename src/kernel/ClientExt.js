@@ -1,4 +1,4 @@
-const { Client } = require('Discord.js');
+const { Client } = require('discord.js');
 const EventLoader = require('./EventLoader');
 const PluginLoader = require('./PluginLoader');
 const CmdLoader = require('./CmdLoader');

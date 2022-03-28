@@ -18,12 +18,7 @@ module.exports = class EventLoader {
             }
             const event = require(resolve(this.path, file));
             if (event === undefined) throw new Error(`File ${file} is not a valid Event file`);
-            if (event.once) {
-                this.client.once(event.name, (...args) => event.execute(...args));
-            }
-            else {
-                this.client.on(event.name, (...args) => event.execute(...args));
-            }
+            this.client.on(file.split('.')[0], (...args) => event(this.client, ...args));
         }
         return true;
     }

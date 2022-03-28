@@ -65,5 +65,6 @@ module.exports = class PluginLoader {
     reloadALL() {
         this.client.Plugin.clear();
         this.load();
+        return true;
     }
 };

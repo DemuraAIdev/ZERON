@@ -11,6 +11,7 @@ exports.SystemConf = {
     prefix: 'z!',
     version: '1.0.0',
     repo: 'https://github.com/DemuraAIdev/ZERON.git',
+    guildid: '901040545265225768',
 };
 exports.shardCount = 'auto';
 exports.health = {
