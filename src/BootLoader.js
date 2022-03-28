@@ -1,19 +1,22 @@
 require('dotenv').config();
 require('./LibLoader.js');
 const { tokenbot } = require('./configs/token');
-const { shardCount } = require('./configs/config');
+const { Shard } = require('./configs/config');
 const { ShardingManager } = require('discord.js');
+const fs = require('fs');
 const health = require('./utils/health');
-
-const manager = new ShardingManager('./src/bot.js', {
-    token: tokenbot,
-    totalShards: shardCount,
-    respawn: true,
-});
+Shard.token = tokenbot;
+const manager = new ShardingManager('./src/bot.js', Shard);
 
 console.info('*************************************');
 console.info('*         ZERON BOOTLOADER          *');
 console.info('*************************************');
+
+// check if file setup.js exists if exists run it and stop the bootloader
+if (fs.existsSync('./src/setup.js')) {
+    console.info('setup.js found, running it');
+    require('./setup.js');
+}
 
 const healthCheck = new health();
 healthCheck.runtime();
@@ -46,10 +49,18 @@ manager.on('shardCreate', shard => {
         }
 
     });
-}).spawn().catch(console.error);
+}).spawn()
+    .then(() => {
+        console.info('All shard launched');
+    }).catch(err => {
+        console.error(err);
+        stop();
+    },
+    );
 function stop() {
     console.warn('Stopping shard');
     manager.broadcastEval('process.exit(0)');
     healthCheck.destroy();
+    console.error('Shard stopped');
     process.exit(0);
 }

@@ -8,7 +8,7 @@ module.exports = class health {
         }
     }
     runtime() {
-        if (!config.health.enabled) return console.warn('Health protection is disabled');
+        if (!config.service.health) return console.warn('Health protection is disabled');
         console.info('Health enabled');
         console.info(`Checking Health every ${config.health.interval} ms`);
         console.info('Running Health service...');

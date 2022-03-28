@@ -1,12 +1,13 @@
 const { Client } = require('discord.js');
+const { resolve } = require('path');
+const config = require('../configs/config');
+const { execSync } = require('child_process');
 const EventLoader = require('./EventLoader');
 const PluginLoader = require('./PluginLoader');
 const CmdLoader = require('./CmdLoader');
-const { resolve } = require('path');
 const DBcache = require('../utils/DBcache');
-const { SystemConf } = require('../configs/config');
-const { execSync } = require('child_process');
 const Utils = require('./Utils');
+const WebServ = require('./WebServ');
 
 /**
  * ZERON Client
@@ -16,18 +17,21 @@ const Utils = require('./Utils');
 module.exports = class ClientExt extends Client {
     constructor(options) {
         super(options);
-        this.config = SystemConf;
+        this.config = config.SystemConf;
+        this.service = config.service;
         this.utils = new Utils(this);
     }
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
     PluginLoaders = new PluginLoader(this, resolve(__dirname, '..', 'modules', 'plugin'));
     CmdLoaders = new CmdLoader(this, resolve(__dirname, '..', 'modules', 'commands'));
+    WebServ = new WebServ(this);
     DBcache = new DBcache();
 
     async init(token) {
         await this.EventLoaders.load();
         await this.PluginLoaders.load();
         await this.CmdLoaders.load();
+        await this.WebServ.listen();
         await this.login(token);
     }
 
