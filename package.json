@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/BootLoader.js",
     "lint": "eslint src/",
-    "start:dev": "nodemon src/BootLoader.js --config nodemon.json"
+    "start:dev": "nodemon src/BootLoader.js --config nodemon.json",
+    "start:nt": "node src/bot --notincldtokn"
   },
   "repository": {
     "type": "git",
