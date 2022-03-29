@@ -11,8 +11,7 @@ module.exports = class Utils {
         return `https://hastebin.com/${body.key}.js`;
     }
 
-    async randomtruefalse() {
+    async random2option() {
         return Math.random() >= 0.5;
     }
-
 };

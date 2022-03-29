@@ -1,10 +1,11 @@
 require('dotenv').config();
 require('./LibLoader.js');
+
 const { tokenbot } = require('./configs/token');
 const { Shard } = require('./configs/config');
 const { ShardingManager } = require('discord.js');
-const fs = require('fs');
 const health = require('./utils/health');
+
 Shard.token = tokenbot;
 const manager = new ShardingManager('./src/bot.js', Shard);
 
@@ -12,11 +13,7 @@ console.info('*************************************');
 console.info('*         ZERON BOOTLOADER          *');
 console.info('*************************************');
 
-// check if file setup.js exists if exists run it and stop the bootloader
-if (fs.existsSync('./src/setup.js')) {
-    console.info('setup.js found, running it');
-    require('./setup.js');
-}
+require('./utils/setup');
 
 const healthCheck = new health();
 healthCheck.runtime();
