@@ -18,6 +18,7 @@ module.exports = class readlines {
         });
         rl.on('close', () => {
             console.warn('Shutdown...');
+            client.logger.log(2, 'Shutdown...');
             client.destroy();
             process.exit(0);
         });

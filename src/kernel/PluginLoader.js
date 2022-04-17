@@ -25,6 +25,7 @@ module.exports = class PluginLoader {
                         }
                         catch (error) {
                             console.error('Error Loading Plugin' + file);
+                            this.client.logger.log(2, 'Error Loading Plugin' + file);
                             throw new Error(`File ${file} is not a valid Plugin file`);
                         }
                         const plugin = require(resolve(this.path, category, file));
@@ -59,12 +60,14 @@ module.exports = class PluginLoader {
         }
         else {
             console.warn(`Plugin ${name} not found`);
+            this.client.logger.log(2, `Reload PLug : Plugin ${name} not found`);
             return false;
         }
     }
     reloadALL() {
         this.client.Plugin.clear();
         this.load();
+        this.client.logger.log(0, 'Reload PLug : All Plugins Reloaded');
         return true;
     }
 };

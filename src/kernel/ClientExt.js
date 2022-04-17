@@ -1,13 +1,14 @@
 const { Client } = require('discord.js');
 const { resolve } = require('path');
-const config = require('../configs/config');
 const { execSync } = require('child_process');
+const config = require('../configs/config');
 const EventLoader = require('./EventLoader');
 const PluginLoader = require('./PluginLoader');
 const CmdLoader = require('./CmdLoader');
 const DBcache = require('../utils/DBcache');
 const Utils = require('./Utils');
 const WebServ = require('./WebServ');
+const Logger = require('../utils/Logger');
 
 /**
  * ZERON Client
@@ -20,6 +21,7 @@ module.exports = class ClientExt extends Client {
         this.config = config.SystemConf;
         this.service = config.service;
         this.utils = new Utils(this);
+        this.logger = new Logger();
     }
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
     PluginLoaders = new PluginLoader(this, resolve(__dirname, '..', 'modules', 'plugin'));

@@ -1,5 +1,7 @@
 class DBcache {
-    // create class DBcache USING map
+    /**
+     * DBcache
+     */
     constructor() {
         this.cache = new Map();
     }

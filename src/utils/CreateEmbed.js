@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-
-const hexColors = {
+const DefEmbedCol = {
     info: 'BLUE',
     warn: 'YELLOW',
     success: 'GREEN',
@@ -9,7 +8,7 @@ const hexColors = {
 
 module.exports = function createEM(type, message) {
     const embed = new MessageEmbed()
-        .setColor(hexColors[type])
+        .setColor(DefEmbedCol[type])
         .setFooter({ text: 'ZERON' })
         .setTimestamp();
     if (type === 'error') embed.setTitle('Error');

@@ -1,5 +1,4 @@
 const { Intents } = require('discord.js');
-
 exports.ClientOptions = {
     allowedMentions: { parse: ['users'] },
     intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES],
@@ -38,11 +37,12 @@ exports.service = {
 exports.presence = {
     status: 'online',
     activitiesList: [
-        { name: 'with discord.js', type: 'WATCHING' },
+        { name: 'with ZERON', type: 'WATCHING' },
         { name: 'with ZERON', type: 'PLAYING' },
         { name: 'with ZERON', type: 'LISTENING' },
     ],
     interval: 30000,
 };
+
 
 exports.configVersion = '1';

@@ -14,6 +14,7 @@ module.exports = class EventLoader {
             }
             catch (error) {
                 console.error('Error Loading Event' + file);
+                this.client.logger.log(2, 'Error Loading Event' + file);
                 throw new Error(`File ${file} is not a valid Event file`);
             }
             const event = require(resolve(this.path, file));
@@ -21,5 +22,13 @@ module.exports = class EventLoader {
             this.client.on(file.split('.')[0], (...args) => event(this.client, ...args));
         }
         return true;
+    }
+    destroy() {
+        this.client.removeAllListeners();
+        return true;
+    }
+    reload() {
+        this.destroy();
+        return this.load();
     }
 };

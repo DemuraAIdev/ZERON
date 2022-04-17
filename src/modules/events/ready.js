@@ -1,5 +1,6 @@
 const { presence } = require('../../configs/config');
 module.exports = async (client) => {
+    client.logger.log(0, 'Client Ready!');
     client.user.setPresence({
         activities: [presence.activitiesList[0]],
         status: presence.status,

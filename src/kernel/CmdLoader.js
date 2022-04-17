@@ -1,9 +1,9 @@
-const DBcache = require('../utils/DBcache');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const fs = require('fs');
 const { resolve } = require('path');
 const { tokenbot } = require('../configs/token');
+const fs = require('fs');
+const DBcache = require('../utils/DBcache');
 const rest = new REST({ version: '9' }).setToken(tokenbot);
 module.exports = class CmdLoader {
     constructor(client, path) {
@@ -25,6 +25,7 @@ module.exports = class CmdLoader {
                         }
                         catch (error) {
                             console.error('Error Loading Command' + file);
+                            this.client.logger.log(2, 'Error Loading Command' + file);
                             return console.error('This command will not be loaded');
                         }
                         const command = require(resolve(this.path, category, file));

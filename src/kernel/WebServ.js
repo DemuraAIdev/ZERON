@@ -13,6 +13,7 @@ module.exports = class WebServ {
         });
         server.listen(Webserv.port, Webserv.host, () => {
             console.info(`WebServer running at http://${Webserv.host}:${Webserv.port}/`);
+            this.client.logger.log(0, 'WebServer Ready!');
         });
     }
 
