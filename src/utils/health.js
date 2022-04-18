@@ -12,9 +12,10 @@ module.exports = class health {
         console.info('Health enabled');
         console.info(`Checking Health every ${config.health.interval} ms`);
         console.info('Running Health service...');
+        const confu = MbToBytes(config.health.ram);
         setInterval(function () {
             const used = process.memoryUsage().heapUsed;
-            if (used > MbToBytes(config.health.ram)) {
+            if (used > confu) {
                 console.warn('Memory usage overload');
                 process.exit(1);
             }

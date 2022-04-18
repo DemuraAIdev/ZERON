@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./LibLoader.js');
+require('./lib/console');
 const ClientExt = require('./kernel/ClientExt');
 const { ClientOptions } = require('./configs/config');
 const { tokenbot } = require('./configs/token');

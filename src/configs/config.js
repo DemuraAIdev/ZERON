@@ -14,6 +14,10 @@ exports.SystemConf = {
     repo: 'https://github.com/DemuraAIdev/ZERON.git',
     guildid: '901040545265225768',
 };
+exports.dbmongo = {
+    url: 'mongodb://localhost:27017/',
+    dbname: 'zeron',
+};
 exports.Shard = {
     respawn: true,
     respawnTime: 30000,
@@ -24,13 +28,14 @@ exports.Webserv = {
     port: 3000,
     host: 'localhost',
 };
+// NOTE : RAM in MB
 exports.health = {
     interval: 2000,
-    ram: '90 MB',
+    ram: '90',
 };
 exports.service = {
     webscocket: false,
-    webserver: true,
+    webserver: false,
     health: true,
 };
 

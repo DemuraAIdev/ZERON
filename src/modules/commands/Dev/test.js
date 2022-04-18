@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const CreateEmbed = require('../../../utils/CreateEmbed');
-exports.run = async (interaction) => {
+exports.run = async (client, interaction) => {
     const embed = CreateEmbed('error', 'This is a test command');
     interaction.reply({ embeds: [embed] });
 

@@ -42,6 +42,7 @@ module.exports = class CmdLoader {
     }
     reload() {
         this.client.Cmd.clear();
+        this.client.logger.log(0, 'Reloaded Commands');
         return this.load();
     }
     async register(slash, name) {

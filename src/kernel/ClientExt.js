@@ -12,6 +12,8 @@ const Logger = require('../utils/Logger');
 
 /**
  * ZERON Client
+ * DemuraCorev1.1.0
+ * based INTI-Hirano Core
  * @extends Client
  * @author DemuraAI
  */
@@ -22,6 +24,7 @@ module.exports = class ClientExt extends Client {
         this.service = config.service;
         this.utils = new Utils(this);
         this.logger = new Logger();
+        this.version = 'DemuraCore-Bot-1.1.0';
     }
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
     PluginLoaders = new PluginLoader(this, resolve(__dirname, '..', 'modules', 'plugin'));
@@ -30,6 +33,8 @@ module.exports = class ClientExt extends Client {
     DBcache = new DBcache();
 
     async init(token) {
+        console.info('Starting DemuraCore...');
+        this.logger.log(0, 'Starting DemuraCore');
         await this.EventLoaders.load();
         await this.PluginLoaders.load();
         await this.CmdLoaders.load();
@@ -37,7 +42,7 @@ module.exports = class ClientExt extends Client {
         await this.login(token);
     }
 
-    async update() {
+    async update(aut) {
         await execSync(`git remote set-url origin ${this.config.repo}  && git pull`, (err, stdout) => {
             if (err) {
                 console.error(err);
@@ -45,7 +50,14 @@ module.exports = class ClientExt extends Client {
             }
             console.log(stdout);
         });
+        if (aut) {
+            await this.reload();
+        }
     }
 
-
+    async reload() {
+        await this.EventLoaders.reload();
+        await this.PluginLoaders.reloadALL();
+        await this.CmdLoaders.reload();
+    }
 };

@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./LibLoader.js');
+require('./lib/console');
 
 const { tokenbot } = require('./configs/token');
 const { Shard } = require('./configs/config');

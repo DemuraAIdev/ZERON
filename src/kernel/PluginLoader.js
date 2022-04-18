@@ -44,6 +44,7 @@ module.exports = class PluginLoader {
         // delete in map
         if (this.client.Plugin.has(name)) {
             this.client.Plugin.delete(name);
+            this.client.logger.log(0, `Disabled PLug : ${name}`);
             return true;
         }
         else {
