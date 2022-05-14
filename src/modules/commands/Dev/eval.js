@@ -7,9 +7,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const { tokenbot } = require('../../../configs/token');
-exports.run = async (client, interaction) => {
+exports.run = async (client, interaction, args) => {
     let evaled;
-    const input = interaction.options.getString('input');
+    const input = (args === undefined) ? interaction.options.getString('input') : args[0];
     const embed = new MessageEmbed()
         .addField('Input', `\`\`\`js\n${input}\`\`\``);
     try {
@@ -48,6 +48,8 @@ exports.data = new SlashCommandBuilder()
 exports.conf = {
     name: 'eval',
     Isdev: true,
+    slash: true,
+    msg: true,
 };
 
 // Function

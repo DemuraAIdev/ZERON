@@ -25,7 +25,9 @@ exports.data = new SlashCommandBuilder()
 
 exports.conf = {
     name: 'test',
-    Isdev: true,
+    Isdev: false,
+    slash: true,
+    msg: false,
 };
 
 // Function

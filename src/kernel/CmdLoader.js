@@ -31,9 +31,12 @@ module.exports = class CmdLoader {
                         const command = require(resolve(this.path, category, file));
                         if (command.conf === undefined) throw new Error(`File ${file} is not a valid Command file`);
                         this.client.Cmd.set(command.conf.name, command);
-                        if (!command.data) return;
+
+                        // Register Slash Command
+                        if (!command.conf.slash) return;
                         slash.push(command.data.toJSON());
                         this.register(slash, command.conf.name);
+
                     });
                 });
             });

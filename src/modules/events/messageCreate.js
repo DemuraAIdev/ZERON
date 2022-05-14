@@ -8,6 +8,7 @@ module.exports = async (client, message) => {
     if (command.Isdev) {
         if (message.author.id !== client.config.ownerID) return message.reply({ content: 'You are not the owner of this bot.', ephemeral: true });
     }
+    if (!command.msg) return;
     try {
         await command.run(client, message, args);
         console.info(`Executed command ${commandName}`);

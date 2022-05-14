@@ -6,4 +6,5 @@ exports.run = async (client, message) => {
 exports.conf = {
     name: 'update',
     Isdev: true,
+
 };
