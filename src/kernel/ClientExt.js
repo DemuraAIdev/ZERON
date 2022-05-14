@@ -3,7 +3,6 @@ const { resolve } = require('path');
 const { execSync } = require('child_process');
 const config = require('../configs/config');
 const EventLoader = require('./EventLoader');
-const PluginLoader = require('./PluginLoader');
 const CmdLoader = require('./CmdLoader');
 const DBcache = require('../utils/DBcache');
 const Utils = require('./Utils');
@@ -27,7 +26,6 @@ module.exports = class ClientExt extends Client {
         this.version = 'DemuraCore-Bot-1.1.0';
     }
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
-    PluginLoaders = new PluginLoader(this, resolve(__dirname, '..', 'modules', 'plugin'));
     CmdLoaders = new CmdLoader(this, resolve(__dirname, '..', 'modules', 'commands'));
     WebServ = new WebServ(this);
     DBcache = new DBcache();
