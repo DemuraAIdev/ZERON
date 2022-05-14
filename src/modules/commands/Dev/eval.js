@@ -1,3 +1,9 @@
+/**
+ * Eval Commands
+ * @description Evaluates code
+ * @author DemuraAI
+ */
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const { tokenbot } = require('../../../configs/token');
@@ -43,6 +49,9 @@ exports.conf = {
     name: 'eval',
     Isdev: true,
 };
+
+// Function
+
 function clean(string) {
     if (typeof string === 'string') {
         return string.replace(/`/g, '`' + String.fromCharCode(8203))

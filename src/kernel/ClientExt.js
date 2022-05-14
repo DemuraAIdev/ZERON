@@ -16,7 +16,7 @@ const Logger = require('../utils/Logger');
  * @extends Client
  * @author DemuraAI
  */
-module.exports = class ClientExt extends Client {
+class ClientExt extends Client {
     constructor(options) {
         super(options);
         this.config = config.SystemConf;
@@ -34,7 +34,6 @@ module.exports = class ClientExt extends Client {
         console.info('Starting DemuraCore...');
         this.logger.log(0, 'Starting DemuraCore');
         await this.EventLoaders.load();
-        await this.PluginLoaders.load();
         await this.CmdLoaders.load();
         await this.WebServ.listen();
         await this.login(token);
@@ -58,4 +57,5 @@ module.exports = class ClientExt extends Client {
         await this.PluginLoaders.reloadALL();
         await this.CmdLoaders.reload();
     }
-};
+}
+module.exports = ClientExt;
