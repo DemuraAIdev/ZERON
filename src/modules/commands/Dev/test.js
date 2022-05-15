@@ -27,7 +27,8 @@ exports.conf = {
     name: 'test',
     Isdev: false,
     slash: true,
-    msg: false,
+    text: false,
+    aliases: ['t'],
 };
 
 // Function

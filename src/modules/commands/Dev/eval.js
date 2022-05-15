@@ -10,6 +10,7 @@ const { tokenbot } = require('../../../configs/token');
 exports.run = async (client, interaction, args) => {
     let evaled;
     const input = (args === undefined) ? interaction.options.getString('input') : args[0];
+
     const embed = new MessageEmbed()
         .addField('Input', `\`\`\`js\n${input}\`\`\``);
     try {
@@ -20,7 +21,7 @@ exports.run = async (client, interaction, args) => {
                 depth: 0,
             });
         }
-        const output = clean(String(evaled));
+        const output = cleanOut(String(evaled));
         if (output.length > 1024) {
             const hastebin = await this.hastebin(output);
             embed.addField('Output', `${hastebin}.js`);
@@ -28,7 +29,7 @@ exports.run = async (client, interaction, args) => {
         else { embed.addField('Output', `\`\`\`js\n${output}\`\`\``); }
     }
     catch (error) {
-        const err = clean(error);
+        const err = cleanOut(error);
         embed.addField('Error', `\`\`\`js\n${err}\`\`\``);
         embed.setColor('RED');
     }
@@ -47,14 +48,21 @@ exports.data = new SlashCommandBuilder()
 
 exports.conf = {
     name: 'eval',
+    description: 'Evals the code',
+    usage: 'eval <code>',
+    example: 'eval console.log("Hello World!")',
+    aliases: ['ev', 'e'],
+    permBot: [],
+    permUser: [],
+    cooldown: 0,
     Isdev: true,
     slash: true,
-    msg: true,
+    text: true,
 };
 
 // Function
 
-function clean(string) {
+function cleanOut(string) {
     if (typeof string === 'string') {
         return string.replace(/`/g, '`' + String.fromCharCode(8203))
             .replace(new RegExp(tokenbot, 'g'), '[RAHASIA]')

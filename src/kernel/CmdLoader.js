@@ -10,6 +10,7 @@ module.exports = class CmdLoader {
         this.client = client;
         this.path = path;
         this.client.Cmd = new DBcache();
+        this.client.aliases = new DBcache();
     }
     async load() {
         const slash = [];
@@ -31,6 +32,7 @@ module.exports = class CmdLoader {
                         const command = require(resolve(this.path, category, file));
                         if (command.conf === undefined) throw new Error(`File ${file} is not a valid Command file`);
                         this.client.Cmd.set(command.conf.name, command);
+                        this.registerAlias(command.conf.name);
 
                         // Register Slash Command
                         if (!command.conf.slash) return;
@@ -47,6 +49,16 @@ module.exports = class CmdLoader {
         this.client.Cmd.clear();
         this.client.logger.log(0, 'Reloaded Commands');
         return this.load();
+    }
+
+    async registerAlias(name) {
+        const cmd = this.client.Cmd.get(name);
+        if (cmd === undefined) throw new Error(`Command ${name} does not exist`);
+        if (cmd.conf.aliases === undefined) return;
+        cmd.conf.aliases.forEach(alias => {
+            this.client.aliases.set(alias, name);
+        });
+        return true;
     }
     async register(slash, name) {
         await rest.put(Routes.applicationGuildCommands('950766442243059742', '901040545265225768'), { body: slash })

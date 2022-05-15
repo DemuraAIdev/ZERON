@@ -8,7 +8,7 @@ exports.ClientOptions = {
 exports.SystemConf = {
     name: 'ZERON',
     OwnerName: 'DemuraAI',
-    ownerID: ['', ''],
+    ownerID: ['754192220843802664'],
     prefix: 'z!',
     version: '1.0.0',
     repo: 'https://github.com/DemuraAIdev/ZERON.git',
