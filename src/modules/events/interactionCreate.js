@@ -10,6 +10,7 @@ module.exports = async (client, interaction) => {
     }
     catch (error) {
         console.error(error);
+        client.logger.log(2, error);
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
     }
 };

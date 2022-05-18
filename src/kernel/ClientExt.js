@@ -28,7 +28,7 @@ class ClientExt extends Client {
     EventLoaders = new EventLoader(this, resolve(__dirname, '..', 'modules', 'events'));
     CmdLoaders = new CmdLoader(this, resolve(__dirname, '..', 'modules', 'commands'));
     WebServ = new WebServ(this);
-    DBcache = new DBcache();
+    SysCache = new DBcache();
 
     async init(token) {
         console.info('Starting DemuraCore...');
@@ -54,7 +54,6 @@ class ClientExt extends Client {
 
     async reload() {
         await this.EventLoaders.reload();
-        await this.PluginLoaders.reloadALL();
         await this.CmdLoaders.reload();
     }
 }

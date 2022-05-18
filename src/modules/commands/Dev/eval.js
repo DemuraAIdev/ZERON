@@ -48,16 +48,19 @@ exports.data = new SlashCommandBuilder()
 
 exports.conf = {
     name: 'eval',
-    description: 'Evals the code',
-    usage: 'eval <code>',
-    example: 'eval console.log("Hello World!")',
     aliases: ['ev', 'e'],
-    permBot: [],
+    permBot: ['SEND_MESSAGES'],
     permUser: [],
-    cooldown: 0,
+    cooldown: 10,
+    ReqArgs: true,
     Isdev: true,
     slash: true,
     text: true,
+    help: {
+        description: 'Evals the code',
+        usage: '<code>',
+        example: 'eval console.log("Hello World!")',
+    },
 };
 
 // Function

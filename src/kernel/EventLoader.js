@@ -28,6 +28,7 @@ module.exports = class EventLoader {
         return true;
     }
     reload() {
+        console.info('Reloaded Events');
         this.destroy();
         return this.load();
     }
