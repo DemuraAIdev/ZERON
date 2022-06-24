@@ -46,6 +46,7 @@ class ClientExt extends Client {
                 return;
             }
             console.log(stdout);
+            return stdout;
         });
         if (aut) {
             await this.reload();

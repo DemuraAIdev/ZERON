@@ -14,7 +14,7 @@ exports.run = async (client, interaction, args) => {
     const embed = new MessageEmbed()
         .addField('Input', `\`\`\`js\n${input}\`\`\``);
     try {
-        evaled = eval(input);
+        evaled = await eval(input);
         embed.setColor('GREEN');
         if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled, {

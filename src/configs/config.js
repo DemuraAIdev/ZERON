@@ -22,7 +22,7 @@ exports.Shard = {
     respawn: true,
     respawnTime: 30000,
     mode: 'process',
-    totalShards: 2,
+    totalShards: 'auto',
 };
 exports.Webserv = {
     port: 3000,
