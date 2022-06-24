@@ -40,20 +40,16 @@ class ClientExt extends Client {
     }
 
     async update(aut, res) {
-        await execSync(`git remote set-url origin ${this.config.repo}  && git pull`, (err, stdout) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            console.log(stdout);
-            return stdout;
-        });
+        const stdouts = await execSync(`git remote set-url origin ${this.config.repo} && git pull`);
+        const stdout = stdouts.toString();
+        console.info(stdout);
         if (aut) {
             await this.reload();
         }
         if (res) {
             process.exit(1);
         }
+        return stdout;
     }
 
     async reload() {
