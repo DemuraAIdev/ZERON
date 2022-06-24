@@ -31,18 +31,14 @@ manager.on('shardCreate', shard => {
         console.error(`Shard ${shard.id} had an error but not restart: ${err}`);
     });
     shard.on('death', (process) => {
-        if (process.exitCode === null) {
-            console.warn(`Shard ${shard.id} died with code null / restart`);
-            return console.warn('Restarting all shard');
-        }
         if (process.exitCode > 0) {
             console.error(`Shard ${shard.id} died with code ${process.exitCode}`);
             return console.error(`Restarting bot Shard ${shard.id}`);
         }
-        else {
+        if (process.exitCode === 0) {
             console.error(`Shard ${shard.id} exit with code ${process.exitCode}`);
+            console.log(process);
             return stop();
-
         }
 
     });
@@ -56,7 +52,6 @@ manager.on('shardCreate', shard => {
     );
 function stop() {
     console.warn('Stopping shard');
-    manager.broadcastEval('process.exit(0)');
     healthCheck.destroy();
     console.error('Shard stopped');
     process.exit(0);

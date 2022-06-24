@@ -51,8 +51,8 @@ class ClientExt extends Client {
         }
         if (res) {
             console.warn('Restarting bot due to system update');
-            this.logger.log('Restarting bot due to system update');
-            process.exit(1);
+            this.logger.log('Restarting bot and all shards due to system update');
+            this.shard.respawnAll();
         }
         return stdout;
     }
