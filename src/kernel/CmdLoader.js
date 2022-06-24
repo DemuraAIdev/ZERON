@@ -74,7 +74,7 @@ module.exports = class CmdLoader {
         return true;
     }
     async register(slash, name) {
-        await rest.put(Routes.applicationGuildCommands('950766442243059742', '901040545265225768'), { body: slash })
+        await rest.put(Routes.applicationGuildCommands('989775174150815765', '901040545265225768'), { body: slash })
             .then(() => console.info('Registered Slash Command ' + name))
             .catch(console.error);
     }

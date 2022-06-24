@@ -39,7 +39,7 @@ class ClientExt extends Client {
         await this.login(token);
     }
 
-    async update(aut) {
+    async update(aut, res) {
         await execSync(`git remote set-url origin ${this.config.repo}  && git pull`, (err, stdout) => {
             if (err) {
                 console.error(err);
@@ -49,6 +49,9 @@ class ClientExt extends Client {
         });
         if (aut) {
             await this.reload();
+        }
+        if (res) {
+            process.exit(1);
         }
     }
 

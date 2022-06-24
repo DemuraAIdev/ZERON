@@ -22,13 +22,13 @@ exports.Shard = {
     respawn: true,
     respawnTime: 30000,
     mode: 'process',
-    totalShards: 'auto',
+    totalShards: 2,
 };
 exports.Webserv = {
     port: 3000,
     host: 'localhost',
 };
-// NOTE : RAM in MB
+// NOTE: RAM in MB
 exports.health = {
     interval: 2000,
     ram: '90',
