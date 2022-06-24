@@ -8,6 +8,7 @@ const client = new ClientExt(ClientOptions);
 client.logger.log(0, 'Start Log');
 client.on('error', console.error);
 client.on('warn', console.warn);
+
 client.init(tokenbot);
 
 process.on('unhandledRejection', (p) => {
