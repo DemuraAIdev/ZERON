@@ -43,10 +43,15 @@ class ClientExt extends Client {
         const stdouts = await execSync(`git remote set-url origin ${this.config.repo} && git pull`);
         const stdout = stdouts.toString();
         console.info(stdout);
+        this.logger.log(0, 'Updating System');
         if (aut) {
+            console.warn('Reload bot due to system update');
+            this.logger.log('Reload bot due to system update');
             await this.reload();
         }
         if (res) {
+            console.warn('Restarting bot due to system update');
+            this.logger.log('Restarting bot due to system update');
             process.exit(1);
         }
         return stdout;
