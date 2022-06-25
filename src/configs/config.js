@@ -13,6 +13,11 @@ exports.SystemConf = {
     version: '1.0.0',
     repo: 'https://github.com/DemuraAIdev/ZERON.git',
     guildid: '901040545265225768',
+    invite: {
+        permission_id: 1101662383111,
+        scope: 'bot%20applications.commands',
+    },
+
 };
 exports.dbmongo = {
     url: 'mongodb://localhost:27017/',

@@ -1,5 +1,6 @@
 const Readline = require('../utils/readline');
 const { post } = require('node-superfetch');
+const id = require('./../configs/client_id.json').id;
 module.exports = class Utils {
     constructor(client) {
         this.client = client;
@@ -13,5 +14,10 @@ module.exports = class Utils {
 
     async random2option() {
         return Math.random() >= 0.5;
+    }
+    inviteGenerator() {
+        const inviteBase = this.client.config.invite;
+        const link = `https://discord.com/api/oauth2/authorize?client_id=${id}&permissions=${inviteBase.permission_id}&scope=${inviteBase.scope}`;
+        return link;
     }
 };
