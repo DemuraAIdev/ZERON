@@ -1,0 +1,12 @@
+{
+    "kernel": {
+        "file": [
+            "ClientExt.js",
+            "CmdLoader.js",
+            "EventLoader.js",
+            "Utils.js",
+            "WebServ.js"
+        ],
+        "dir": "kernel/"
+    }
+}
