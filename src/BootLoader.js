@@ -37,7 +37,6 @@ manager.on('shardCreate', shard => {
         }
         if (process.exitCode === 0) {
             console.error(`Shard ${shard.id} exit with code ${process.exitCode}`);
-            console.log(process);
             return stop();
         }
 

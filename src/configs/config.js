@@ -37,6 +37,7 @@ exports.service = {
     webscocket: false,
     webserver: false,
     health: true,
+    logger: true,
 };
 
 exports.presence = {

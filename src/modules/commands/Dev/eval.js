@@ -9,7 +9,7 @@ const { MessageEmbed } = require('discord.js');
 const { tokenbot } = require('../../../configs/token');
 exports.run = async (client, interaction, args) => {
     let evaled;
-    const input = (args === undefined) ? interaction.options.getString('input') : args[0];
+    const input = (args === undefined) ? interaction.options.getString('input') : args.join(' ');
 
     const embed = new MessageEmbed()
         .addField('Input', `\`\`\`js\n${input}\`\`\``);
@@ -51,7 +51,7 @@ exports.conf = {
     aliases: ['ev', 'e'],
     permBot: ['SEND_MESSAGES'],
     permUser: [],
-    cooldown: 10,
+    cooldown: 0,
     ReqArgs: true,
     Isdev: true,
     slash: true,
