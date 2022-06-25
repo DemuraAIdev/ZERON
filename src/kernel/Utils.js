@@ -1,6 +1,6 @@
 const Readline = require('../utils/readline');
 const { post } = require('node-superfetch');
-const id = require('./../configs/client_id.json').id;
+const id = require('./../temp/client_id.json').id;
 module.exports = class Utils {
     constructor(client) {
         this.client = client;

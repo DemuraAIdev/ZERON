@@ -8,6 +8,7 @@ const DBcache = require('../utils/DBcache');
 const Utils = require('./Utils');
 const WebServ = require('./WebServ');
 const Logger = require('../utils/Logger');
+const fs = require('fs');
 
 /**
  * ZERON Client
@@ -37,6 +38,7 @@ class ClientExt extends Client {
         await this.CmdLoaders.load();
         await this.WebServ.listen();
         await this.login(token);
+        await fs.writeFileSync('src/temp/client_id.json', `{"id": ${this.application.id}}`);
     }
 
     async update(aut, res) {
