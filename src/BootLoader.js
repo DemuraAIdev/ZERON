@@ -46,7 +46,7 @@ manager.on('shardCreate', shard => {
         console.info('All shard launched');
     }).catch(err => {
         console.error(err);
-        stop();
+        require('./RecoveryMod');
     },
     );
 function stop() {
