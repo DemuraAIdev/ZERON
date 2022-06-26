@@ -2,7 +2,7 @@ const config = require('../configs/config');
 
 module.exports = class health {
     constructor() {
-        if (config.configVersion !== '1') {
+        if (config.configVersion !== '2') {
             console.error('Config version is not compatible');
             process.exit(1);
         }

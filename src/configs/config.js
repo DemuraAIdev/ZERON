@@ -56,4 +56,4 @@ exports.presence = {
 };
 
 
-exports.configVersion = '1';
+exports.configVersion = '2';
