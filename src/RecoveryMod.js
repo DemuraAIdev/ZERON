@@ -36,7 +36,7 @@ for (const i in utilsdur.file) {
     else {
         console.error(`File ${utilsdur.file[i]} not found`);
         console.error(`Repairing ${utilsdur.file[i]}`);
-        getRemoteFile(`${utilsdur.file[i]}`, 'kernel/');
+        getRemoteFile(`${utilsdur.file[i]}`, 'utils/');
     }
 }
 
