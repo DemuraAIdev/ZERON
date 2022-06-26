@@ -18,7 +18,7 @@ console.info(ascii);
 console.info('Checking for broken components');
 // Check COmponen
 const kerndir = dirli.kernel;
-for (const i in dirli.kernel.file) {
+for (const i in kerndir.file) {
     if (fs.existsSync(`src/${kerndir.dir}${kerndir.file[i]}`)) {
         console.info(`FIle ${kerndir.file[i]} Exist`);
     }
@@ -26,6 +26,17 @@ for (const i in dirli.kernel.file) {
         console.error(`File ${kerndir.file[i]} not found`);
         console.error(`Repairing ${kerndir.file[i]}`);
         getRemoteFile(`${kerndir.file[i]}`, 'kernel/');
+    }
+}
+const utilsdur = dirli.utils;
+for (const i in utilsdur.file) {
+    if (fs.existsSync(`src/${utilsdur.dir}${utilsdur.file[i]}`)) {
+        console.info(`FIle ${utilsdur.file[i]} Exist`);
+    }
+    else {
+        console.error(`File ${utilsdur.file[i]} not found`);
+        console.error(`Repairing ${utilsdur.file[i]}`);
+        getRemoteFile(`${utilsdur.file[i]}`, 'kernel/');
     }
 }
 

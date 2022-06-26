@@ -8,5 +8,16 @@
             "WebServ.js"
         ],
         "dir": "kernel/"
+    },
+    "utils": {
+        "file": [
+            "CreateEmbed.js",
+            "DBcache.js",
+            "health.js",
+            "Logger.js",
+            "readline.js",
+            "setup.js"
+        ],
+        "dir": "utils/"
     }
 }
