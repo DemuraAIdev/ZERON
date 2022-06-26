@@ -44,10 +44,10 @@ for (const i in utilsdur.file) {
 // Function
 function getRemoteFile(file, location) {
     const localFile = fs.createWriteStream(`src/${location}/${file}`);
-    console.log(`Downloading ${file}`);
+    console.warn(`Downloading ${file}`);
     http.get(`${link}/src/${location}${file}`, function (response) {
         response.on('end', function () {
-            console.log('Download complete');
+            console.warn('Download complete');
         });
 
         response.pipe(localFile);
