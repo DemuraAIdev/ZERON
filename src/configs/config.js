@@ -3,7 +3,6 @@ exports.ClientOptions = {
     allowedMentions: { parse: ['users'] },
     intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES],
     retryLimit: 3,
-
 };
 exports.SystemConf = {
     name: 'ZERON',

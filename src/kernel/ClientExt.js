@@ -1,6 +1,7 @@
 const { Client } = require('discord.js');
 const { resolve } = require('path');
 const { execSync } = require('child_process');
+const mongoose = require('mongoose');
 const config = require('../configs/config');
 const EventLoader = require('./EventLoader');
 const CmdLoader = require('./CmdLoader');
@@ -34,6 +35,11 @@ class ClientExt extends Client {
     async init(token) {
         console.info('Starting DemuraCore...');
         this.logger.log(0, 'Starting DemuraCore');
+        mongoose.connect(config.mongodb.uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+            console.info('Connected to the MongoDB database.');
+        }).catch((err) => {
+            console.error('Unable to connect to the Mongodb database. Error:' + err);
+        });
         await this.EventLoaders.load();
         await this.CmdLoaders.load();
         await this.WebServ.listen();

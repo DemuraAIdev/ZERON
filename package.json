@@ -38,6 +38,7 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "i18next": "^21.6.16",
+    "mongoose": "^6.4.1",
     "node-superfetch": "^0.2.3"
   }
 }
