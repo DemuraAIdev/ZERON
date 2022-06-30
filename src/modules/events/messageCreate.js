@@ -3,6 +3,12 @@ module.exports = async (client, message) => {
     const prefix = client.config.prefix;
     if (!message.content.startsWith(prefix)) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    /**
+     * PLUGIN
+     * @dir ../plugin/
+     */
+
+    // SYSTEM
     const commandName = args.shift().toLowerCase();
     const command = client.Cmd.get(commandName) || client.Cmd.get(client.Cmd.get('aliases').get(commandName));
     if (!command) return;
