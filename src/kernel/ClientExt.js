@@ -68,6 +68,9 @@ class ClientExt extends Client {
         }
         return stdout;
     }
+    async syncDB() {
+        //TODO: SYNC ALL DATABASE CLOUD -> LOCAL -> CACHE
+    }
 
     async reload() {
         await this.EventLoaders.reload();

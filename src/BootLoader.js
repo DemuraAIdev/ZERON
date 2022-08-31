@@ -5,6 +5,18 @@ const { tokenbot } = require('./configs/token');
 const { Shard } = require('./configs/config');
 const { ShardingManager } = require('discord.js');
 const health = require('./utils/health');
+const Sentry = require('@sentry/node');
+
+// Importing @sentry/tracing patches the global hub for tracing to work.
+const SentryTracing = require('@sentry/tracing');
+
+Sentry.init({
+    dsn: 'https://95773f2a96f94547aaf1c97e063dd3a8@o1063042.ingest.sentry.io/6703330',
+
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+});
 
 Shard.token = tokenbot;
 const manager = new ShardingManager('./src/bot.js', Shard);
